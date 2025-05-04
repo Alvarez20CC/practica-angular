@@ -1,0 +1,24 @@
+<div class="svg-header">
+    <svg width="300" height="60" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
+      <text x="55" y="40" font-family="Arial, sans-serif" font-size="40">
+        <tspan fill="#d32f2f">Fake</tspan>
+        <tspan fill="#fbc02d">Store</tspan>
+      </text>
+    </svg>
+  </div>
+  
+
+  
+<app-pag/>
+
+
+  
+<div class="container">
+    <!-- Componente de búsqueda -->
+    <app-search (search)="searchProducts($event)"></app-search>
+
+    <app-card [productsAll]="products"></app-card>
+</div>
+
+<app-pag/>
+

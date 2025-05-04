@@ -1,0 +1,6 @@
+.svg-header {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    margin: 2rem 0;           /* Espaciado arriba y abajo */
+  }
+  

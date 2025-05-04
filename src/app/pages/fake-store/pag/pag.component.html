@@ -1,0 +1,24 @@
+<div class="row mt-3 justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <!-- Botón "Anterior" deshabilitado -->
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Previous" aria-disabled="true" tabindex="-1">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+      <!-- AL ser una API con pocos datos solo tiene 1 pag -->
+      <li class="page-item active">
+        <a class="page-link" href="#" routerLink="/fakestore" routerLinkActive="active">1</a>
+      </li>
+
+      <!-- Botón "Siguiente" deshabilitado -->
+      <li class="page-item disabled">
+        <a class="page-link" href="#" aria-label="Next" aria-disabled="true" tabindex="-1">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

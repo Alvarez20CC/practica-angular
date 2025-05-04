@@ -1,0 +1,62 @@
+<div class="row mt-3 mb-3 g-3">
+  <ng-container *ngIf="productsAll?.length && productsAll.length > 0; else noProducts">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of productsAll">
+      <div class="product-card border rounded shadow-sm h-100 p-3 d-flex flex-column justify-content-between">
+        
+        
+        <div class="product-image text-center mb-2">
+          <ng-container *ngIf="!imageLoader">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </ng-container>
+          <img 
+            [src]="item?.image" 
+            [alt]="item?.title" 
+            class="img-fluid"
+            loading="lazy"
+            (load)="imageLoader = true">
+        </div>
+
+        
+        <div class="product-content">
+          <h5 class="product-title">{{ item.title }}</h5>
+          <p class="text-muted mb-1"><strong>Precio:</strong> ${{ item.price }}</p>
+          <p class="text-muted mb-1"><strong>Categoría:</strong> {{ item.category }}</p>
+          <p class="text-muted mb-1"><strong>Rating:</strong> {{ item.rating.rate }} ⭐ ({{ item.rating.count }} valoraciones)</p>
+          <p class="product-description small text-truncate" style="max-height: 3rem;">{{ item.description }}</p>
+        </div>
+
+        
+        <div class="mt-2 text-end">
+          <button (click)="openModal(item)" class="btn btn-sm btn-outline-primary">Ver</button>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noProducts>
+    <div class="alert alert-danger w-100 text-center" role="alert">
+      No hay productos disponibles.
+    </div>
+  </ng-template>
+</div>
+
+
+<div *ngIf="selectedProduct" class="modal-overlay d-flex justify-content-center align-items-center">
+  <div class="modal-content p-4 rounded shadow">
+    <button class="close-button" (click)="closeModal()" aria-label="Cerrar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    
+    <img [src]="selectedProduct.image" [alt]="selectedProduct.title" class="img-fluid mb-3" style="max-height: 250px; object-fit: contain;">
+    <h4>{{ selectedProduct.title }}</h4>
+    <p><strong>Precio:</strong> ${{ selectedProduct.price }}</p>
+    <p><strong>Categoría:</strong> {{ selectedProduct.category }}</p>
+    <p><strong>Rating:</strong> {{ selectedProduct.rating.rate }} ⭐ ({{ selectedProduct.rating.count }} valoraciones)</p>
+    <p><strong>Descripción:</strong> {{ selectedProduct.description }}</p>
+  </div>
+</div>
